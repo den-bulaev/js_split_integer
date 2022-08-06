@@ -11,11 +11,11 @@ function splitInteger(value, numberOfParts) {
   for (let partsLeft = numberOfParts; partsLeft > 0; partsLeft--) {
     const part = Math.floor(rest / partsLeft);
 
-    parts.push(part);
+    parts.push(value < numberOfParts ? 0 : part);
     rest -= part;
   }
 
-  return parts;
+  return Number.isInteger(value / numberOfParts) ? parts : parts.sort((a, b) => a - b);
 }
 
 module.exports = splitInteger;
